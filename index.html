@@ -33,8 +33,16 @@
           <div class="col-md-3 mb-4">
              <div class="card shadow-lg p-3 mb-5 bg-dark rounded">
                 <div class="card-body">
-                   <h4 class="card-title">Litecoin</h4>
-                   <p class="card-text display-4" id="LTC"></p>
+                  <h4 class="card-title">Litecoin</h4>
+                  <p class="card-text display-4" id="LTC"></p>
+                  <form>  
+                     <div class="form-group">
+                        <label for="Convert-LTC">Amount of LTC</label>
+                        <textarea class="form-control" id="Convert-LTC" rows="1"></textarea>
+                     </div>
+                  </form>
+                  <h4 class="card-title">EUR</h4>
+                  <p class="card-text display-4" id="LTCEUR"></p>
                 </div>
              </div>
           </div>
@@ -42,9 +50,17 @@
           <div class="col-md-3 mb-4">
              <div class="text-white card shadow-lg p-3 mb-5 bg-dark rounded">
                 <div class="card-body">
-                   <h4 class="card-title">Bitcoin</h4>
-                      <p class="card-text display-4" id="BTC"></p>
-                </div>
+                  <h4 class="card-title">Bitcoin</h4>
+                  <p class="card-text display-4" id="BTC"></p>
+                  <form>  
+                     <div class="form-group">
+                        <label for="Convert-BTC">Amount of BTC</label>
+                        <textarea class="form-control" id="Convert-BTC" rows="1"></textarea>
+                     </div>
+                  </form>
+                  <h4 class="card-title">EUR</h4>
+                  <p class="card-text display-4" id="BTCEUR"></p>
+                  </div>
              </div>
           </div>
 
@@ -53,6 +69,14 @@
                 <div class="card-body">
                    <h4 class="card-title">Ethereum</h4>
                    <p class="card-text display-4" id="ETH"></p>
+                   <form>  
+                     <div class="form-group">
+                        <label for="Convert-ETH">Amount of ETH</label>
+                        <textarea class="form-control" id="Convert-ETH" rows="1"></textarea>
+                     </div>
+                  </form>
+                  <h4 class="card-title">EUR</h4>
+                  <p class="card-text display-4" id="ETHEUR"></p>
                 </div>
              </div>
           </div>
@@ -61,6 +85,14 @@
                 <div class="card-body">
                    <h4 class="card-title">Ripple</h4>
                    <p class="card-text display-4" id="XRP"></p>
+                   <form>  
+                     <div class="form-group">
+                        <label for="Convert-XRP">Amount of XRP</label>
+                        <textarea class="form-control" id="Convert-XRP" rows="1"></textarea>
+                     </div>
+                  </form>
+                  <h4 class="card-title">EUR</h4>
+                  <p class="card-text display-4" id="XRPEUR"></p>
                 </div>
              </div>
           </div>
@@ -147,6 +179,13 @@
 						var response = JSON.parse(request.responseText);
 						var price = response.bids[0][0];
 						document.getElementById(coins[i]).innerHTML = "€" + price;
+                 
+                 
+                  var input = document.getElementById("Convert-" + coins[i]).value
+                  var calculatedprice = input * price
+                  var roundedcalcprice = Math.round(calculatedprice * 100) / 100
+                  document.getElementById(coins[i] + "EUR").innerHTML = "€" + roundedcalcprice
+                  
 					}
 				};
 				request.send();
